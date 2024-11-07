@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1A43BF !important; /* Blue background */
+  --foreground: #00072D !important; /* Dark blue text */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0D2B8C !important; /* Darker blue background */
+    --foreground: #BFD4FF !important; /* Light blue text */
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }

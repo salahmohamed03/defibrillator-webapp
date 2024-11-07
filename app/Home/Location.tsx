@@ -41,7 +41,7 @@ function LocationFinder() {
     
 
     return (
-        <div className='mt-5 w-[90%] bg-gray-400 rounded-xl p-3 text-xl'>
+        <div className='mt-5 w-[90%] bg-[#b3e5fc] rounded-xl p-3 text-xl'>
             <a href={googleMapsLink} target="_blank" rel="noopener noreferrer">
                <div className='flex flex-col'>
                    <p className='text-center w-full mt-1' >

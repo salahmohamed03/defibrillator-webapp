@@ -58,9 +58,9 @@ const RealTimePlot = () => {
         labels: data.map((_, i) => i),
         datasets: [
             {
-                label: 'ECG Simulation',
+                label: 'ECG Data',
                 data: data,
-                borderColor: 'rgba(10,100,200,1)',
+                borderColor: 'rgba(0,0,200,1)',
                 fill: false,
                 pointRadius: 0, // Remove circles on the line
             },
@@ -74,12 +74,15 @@ const RealTimePlot = () => {
     };
 
     return (
-        <div>
-            <button onClick={() => setIsArrhythmia(prev => !prev)}>
+                <div>
+            <button 
+                onClick={() => setIsArrhythmia(prev => !prev)}
+                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded shadow"
+            >
                 Switch to {isArrhythmia ? 'ECG' : 'Arrhythmia'} Pattern
             </button>
             <Line data={chartData} options={options} />
-        </div>
+             </div>
     );
 };
 
