@@ -23,9 +23,8 @@ ChartJS.register(
     Legend
 );
 
-const RealTimePlot = () => {
+const RealTimePlot = ({ isArrhythmia, setIsArrhythmia }: { isArrhythmia: boolean, setIsArrhythmia: (value: boolean) => void }) => {
     const [data, setData] = useState<number[]>([]);
-    const [isArrhythmia, setIsArrhythmia] = useState(false); // State to track current pattern
 
     const ecgPattern = [
         0, 0.1, 0.3, 0.2, -0.1, 0, // P wave
@@ -42,7 +41,7 @@ const RealTimePlot = () => {
 
     useEffect(() => {
         let index = 0;
-        const currentPattern = isArrhythmia ? arrhythmiaPattern : ecgPattern; // Choose pattern based on state
+        const currentPattern = !isArrhythmia ? arrhythmiaPattern : ecgPattern; // Choose pattern based on state
         
         const intervalId = setInterval(() => {
             const newValue = currentPattern[index];
@@ -58,9 +57,9 @@ const RealTimePlot = () => {
         labels: data.map((_, i) => i),
         datasets: [
             {
-                label: 'ECG Data',
+                label: 'ECG Simulation',
                 data: data,
-                borderColor: 'rgba(0,0,200,1)',
+                borderColor: 'rgba(10,100,200,1)',
                 fill: false,
                 pointRadius: 0, // Remove circles on the line
             },
@@ -74,15 +73,9 @@ const RealTimePlot = () => {
     };
 
     return (
-                <div>
-            <button 
-                onClick={() => setIsArrhythmia(prev => !prev)}
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded shadow"
-            >
-                Switch to {isArrhythmia ? 'ECG' : 'Arrhythmia'} Pattern
-            </button>
+        <div>
             <Line data={chartData} options={options} />
-             </div>
+        </div>
     );
 };
 
